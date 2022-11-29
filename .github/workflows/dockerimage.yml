@@ -47,9 +47,9 @@ jobs:
         with:
           build-args: |
             BUILD_DATE=${{ steps.gathervars.outputs.BUILD_DATE }}
-            VERSION=${{ steps.gathervars.outputs.VERSION }}
+            VERSION=${{ steps.gathervars.outputs.BUILD_DATE }}
           context: ./docker/production
           tags: |
-            ${{ steps.gathervars.outputs.TAG }}
+            ${{ steps.gathervars.outputs.TAGS }}
           platforms: ${{ env.PLATFORMS }}
           push: true
