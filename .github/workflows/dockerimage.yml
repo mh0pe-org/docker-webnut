@@ -18,17 +18,9 @@ jobs:
       - name: Variable Gathering
         id: gathervars
         run: |
-          NOT_PREVIOUSLY_PUBLISHED=0
           # get a current BUILD_DATE
 
           echo "::set-output name=BUILD_DATE::$(date +%Y%m%d-%H%M%S)"
-
-          TAGS="ghcr.io/${{ github.repository }}:release, ghcr.io/${{ github.repository }}:latest, ghcr.io/${{ github.repository }}:$BUILD_DATE"
-          PRIMARY_TAG=latest
-
-          echo "::set-output name=TAG::$TAGS"
-          echo "::set-output name=PRIMARY_TAG::$PRIMARY_TAG"
-          # check if version has already been published
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
@@ -49,7 +41,6 @@ jobs:
             BUILD_DATE=${{ steps.gathervars.outputs.BUILD_DATE }}
             VERSION=${{ steps.gathervars.outputs.BUILD_DATE }}
           context: ./docker/production
-          tags: |
-            ${{ steps.gathervars.outputs.TAGS }}
+          tags: ghcr.io/${{ github.repository }}:${{ steps.gathervars.outputs.BUILD_DATE }}
           platforms: ${{ env.PLATFORMS }}
           push: true
