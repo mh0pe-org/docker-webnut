@@ -7,7 +7,7 @@ EXPOSE 6543
 WORKDIR /app/
 #hadolint ignore=DL3018
 RUN apk add --no-cache bash git \
-    && git clone https://github.com/rshipp/webNUT.git \
+    && git clone https://github.com/mh0pe/webNUT.git \
     && pip install --no-cache-dir -e webNUT
 
 COPY /docker-entrypoint.sh /docker-entrypoint.sh
