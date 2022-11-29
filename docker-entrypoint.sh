@@ -11,7 +11,6 @@ echo "port = '$upsport'" >> /app/webNUT/webnut/config.py
 echo "username = '$upsuser'" >> /app/webNUT/webnut/config.py
 echo "password = '$upspassword'" >> /app/webNUT/webnut/config.py
 
-cat /app/webNUT/webnut/config.py
 cd /app/webNUT && python setup.py install
 
 cd webnut
