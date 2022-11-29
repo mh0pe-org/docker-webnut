@@ -40,7 +40,7 @@ jobs:
           build-args: |
             BUILD_DATE=${{ steps.gathervars.outputs.BUILD_DATE }}
             VERSION=${{ steps.gathervars.outputs.BUILD_DATE }}
-          context: ./docker/production
+          context: .
           tags: ghcr.io/${{ github.repository }}:${{ steps.gathervars.outputs.BUILD_DATE }}
           platforms: ${{ env.PLATFORMS }}
           push: true
